@@ -20,11 +20,11 @@ setup(
     ],
     entry_points="""
         [console_scripts]
-        almanak=almanak-cli.app:cli
+        almanak=almanakcli.app:cli
     """,
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
-        "Programming Language :: Python :: 3.6.2",
+        "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],

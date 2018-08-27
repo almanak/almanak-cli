@@ -8,7 +8,7 @@ import click
 import almanak
 
 # Application
-import file_cmds as file_commands
+from almanakcli import file_group as file_commands
 
 
 # Setup for CLI-logging
