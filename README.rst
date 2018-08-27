@@ -1,3 +1,1 @@
-# almanak
-
-Module and command line interface for almanak.
+Command line interface for almanak.

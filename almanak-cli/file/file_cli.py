@@ -1,7 +1,7 @@
 import click
 import logging
 
-from .file import compress, decompress, extract, fileinfo
+from almanak.file import compress, decompress, extract, fileinfo
 
 logger = logging.getLogger(__name__)
 

@@ -5,9 +5,10 @@ from os import path
 
 # Third party
 import click
+import almanak
 
 # Application
-from almanak.file import file_cli as file_commands
+from .file import file_cli as file_commands
 
 
 # Setup for CLI-logging
@@ -43,5 +44,5 @@ cli.add_command(file_commands.file_cli)
 # cli.add_command(file_commands.compress_cmd)
 # cli.add_command(file_commands.decompress_cmd)
 
-if __name__ == '__main__':
-    cli()
+# if __name__ == '__main__':
+#     cli()
