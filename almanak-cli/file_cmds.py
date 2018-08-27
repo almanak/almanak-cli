@@ -1,6 +1,8 @@
-import click
+# Standard
 import logging
 
+# Third pary
+import click
 from almanak.file import compress, decompress, extract, fileinfo
 
 logger = logging.getLogger(__name__)

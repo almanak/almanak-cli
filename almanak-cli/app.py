@@ -8,7 +8,7 @@ import click
 import almanak
 
 # Application
-from .file import file_cli as file_commands
+import file_cmds as file_commands
 
 
 # Setup for CLI-logging
@@ -21,7 +21,7 @@ console_formatter = logging.Formatter("%(levelname)s \t %(message)s")
 console_handler.setFormatter(console_formatter)
 logger.addHandler(console_handler)
 # all to logfile
-file_handler = logging.FileHandler(path.expanduser('~/.almanak_log.txt'))
+file_handler = logging.FileHandler(path.expanduser('~/almanak_log.txt'))
 file_handler.setLevel(logging.DEBUG)
 file_formatter = logging.Formatter("%(asctime)s %(levelname)s \t %(funcname)s %(message)s")
 file_handler.setFormatter(file_formatter)

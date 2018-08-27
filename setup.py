@@ -5,7 +5,7 @@ with open("README.rst", "r") as fh:
 
 setup(
     name='almanak-cli',
-    version='0.1.0',
+    version='0.1.2',
     author='Claus Juhl Knudsen',
     author_email='clausjuhl@yahoo.com',
     packages=find_packages(),
@@ -16,13 +16,14 @@ setup(
     license='MIT',
     python_requires='>=3.6.2',
     install_requires=[
-        'click>=6.7,<7'
+        'click==6.7'
     ],
     entry_points="""
         [console_scripts]
         almanak=almanak-cli.app:cli
     """,
     classifiers=[
+        "Development Status :: 2 - Pre-Alpha",
         "Programming Language :: Python :: 3.6.2",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
