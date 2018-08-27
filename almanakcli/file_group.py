@@ -44,14 +44,15 @@ def extract_cmd(file, archive, target_dir, overwrite):
     try:
         out_path = extract(file_path=file, zip_path=archive,
                            out_path=target_dir, overwrite=overwrite)
-        ctx = click.get_current_context()
-        for k, v in ctx.params.items():
-            click.echo("ctx-key: " + str(k) + ", ctx-value: " + str(v))
-        click.echo(type(ctx.params))
+        # ctx = click.get_current_context()
+        # for k, v in ctx.params.items():
+        #     click.echo("ctx-key: " + str(k) + ", ctx-value: " + str(v))
+        # click.echo(type(ctx.params))
         # if click.get_current_context().verbose:
         #     click.echo('INFO: zip-member extracted to: ' + out_path)
         # else:
         #     click.echo('This is not printet to stout, as verbose is not set')
+        click.echo(out_path)
     except Exception:
         logger.exception('unable to extact file from zip-archive')
         raise
