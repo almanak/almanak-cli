@@ -1,1 +1,11 @@
 pip install --index-url https://test.pypi.org/simple/ almanak
+
+# Log
+Stderr is where you should put all your console-output and stuff meant to Log
+Stdout is where you should put stuff meant for piping or saving to file
+
+# isatty
+used to determine if out-stream is a screen or file, and if screen, then use colorama
+
+# use the argument strippy=True when initializing colorama, as it strips the colorcodes
+# from the output if the output is not a console

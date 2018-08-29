@@ -21,7 +21,7 @@ setup(
     ],
     entry_points="""
         [console_scripts]
-        almanak=almanakcli.cmd:cli
+        almanak=almanakcli.cmd:safe_cli
     """,
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",

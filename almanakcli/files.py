@@ -7,15 +7,15 @@ from almanak.file import compress, decompress, extract, fileinfo
 
 logger = logging.getLogger(__name__)
 
-@click.group(name='file')
-def file_cli():
+@click.group(name='files')
+def files_group():
     '''
-    Operations on a single file or directory (zip)
+    Operations on file(s)
     '''
     pass
 
 
-@click.command('info', short_help='info on a file or zip-archive')
+@click.command('info', short_help='info on a file, incl. zip-archive')
 @click.argument('path', type=click.Path(exists=True, resolve_path=True))
 def info_cmd(path):
     '''
@@ -24,10 +24,12 @@ def info_cmd(path):
     # click.echo_via_pager('\n'.join('Line %d' % idx
     #                                for idx in range(200)))
     try:
-        click.echo(fileinfo(path))
+        fileinfo(path)
     except Exception as e:
-        logger.error("something went wrong")
         logger.exception(e)
+        raise
+
+
 
 @click.command('extract', short_help='extract file from zip-archive')
 @click.argument('file', type=click.Path())
@@ -53,12 +55,12 @@ def extract_cmd(file, archive, target_dir, overwrite):
         # else:
         #     click.echo('This is not printet to stout, as verbose is not set')
         click.echo(out_path)
-    except Exception:
-        logger.exception('unable to extact file from zip-archive')
+    except Exception as e:
+        logger.exception(e)
         raise
 
 
-@click.command('compress', short_help='zip-compress file or directory')
+@click.command('zip', short_help='zip-compress file or directory')
 # Optional dir and filename. Also overwrite, but I do not think it works.
 @click.option('--target-dir',
               type=click.Path(writable=True, resolve_path=True),
@@ -67,7 +69,7 @@ def extract_cmd(file, archive, target_dir, overwrite):
               help='specify a new name for the zip-file.')
 @click.option('--overwrite', is_flag=True, help='overwrite any existing file')
 @click.argument('path', type=click.Path(exists=True, resolve_path=True))
-def compress_cmd(path, target_dir, target_name, overwrite):
+def zip_cmd(path, target_dir, target_name, overwrite):
     """
     Saves a zip-compressed copy of <PATH> in the same directory.
     """
@@ -82,14 +84,14 @@ def compress_cmd(path, target_dir, target_name, overwrite):
         click.echo('Error: ' + str(e))
 
 
-@click.command('decompress', short_help='decompress a zipfile')
+@click.command('unzip', short_help='decompress a zip-archive')
 # Optional extract-directory. Also overwrite, but does probably not work.
 @click.option('--target-dir', type=click.Path(writable=True, resolve_path=True),
     help='specify a different path to extract to')
 @click.option('--overwrite', is_flag=True,
     help='overwrite any existing files or directories')
 @click.argument('path', type=click.Path(exists=True, resolve_path=True))
-def decompress_cmd(path, target_dir, overwrite):
+def unzip_cmd(path, target_dir, overwrite):
     """
     Decompresses a zipfile PATH into its parent-directory or TARGET.
     Use OVERWRITE to overwrite any existing file or directory with same name.
@@ -99,10 +101,10 @@ def decompress_cmd(path, target_dir, overwrite):
     click.echo('overwrite: ' + str(overwrite))
 
 
-file_cli.add_command(extract_cmd)
-file_cli.add_command(compress_cmd)
-file_cli.add_command(decompress_cmd)
+files_group.add_command(extract_cmd)
+files_group.add_command(zip_cmd)
+files_group.add_command(unzip_cmd)
 # file_cli.add_command(validate_cmd)
 # file_cli.add_command(identify_mcd)
 # file_cli.add_command(hash_cmd)
-file_cli.add_command(info_cmd)
+files_group.add_command(info_cmd)
