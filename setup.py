@@ -5,7 +5,7 @@ with open("README.rst", "r") as fh:
 
 setup(
     name='almanak-cli',
-    version='0.1.3',
+    version='0.1.4',
     author='Claus Juhl Knudsen',
     author_email='clausjuhl@yahoo.com',
     packages=find_packages(),
@@ -21,7 +21,7 @@ setup(
     ],
     entry_points="""
         [console_scripts]
-        almanak=almanakcli.cmd:safe_cli
+        almanak=almanakcli.__init__:cli
     """,
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",

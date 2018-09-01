@@ -5,6 +5,8 @@ Stderr is where you should put all your console-output and stuff meant to Log
 Stdout is where you should put stuff meant for piping or saving to file
 
 # isatty
+https://stackoverflow.com/questions/1077113/how-do-i-detect-whether-sys-stdout-is-attached-to-terminal-or-not
+https://stackoverflow.com/questions/699390/whats-the-best-way-to-tell-if-a-python-program-has-anything-to-read-from-stdin/699446
 used to determine if out-stream is a screen or file, and if screen, then use colorama
 
 # use the argument strippy=True when initializing colorama, as it strips the colorcodes
