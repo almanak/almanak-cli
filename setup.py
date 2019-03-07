@@ -5,19 +5,19 @@ with open("README.rst", "r") as fh:
 
 setup(
     name='almanak-cli',
-    version='0.1.4',
+    version='0.2.0',
     author='Claus Juhl Knudsen',
     author_email='clausjuhl@yahoo.com',
     packages=find_packages(),
-    description='Command line interface to almanak.',
+    description='Command line interface to almanak-stuff.',
     long_description=long_description,
     url='https://github.com/clausjuhl/almanak-cli',
     include_package_data=True,
     license='MIT',
     python_requires='>=3.6.2',
     install_requires=[
-        'click==6.7',
-        'almanak',
+        'click',
+        # 'almanak',
     ],
     entry_points="""
         [console_scripts]

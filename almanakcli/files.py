@@ -8,7 +8,7 @@ from almanak.file import compress, decompress, extract, fileinfo
 files_log = logging.getLogger(__name__)
 
 @click.group(name='files')
-def files_group():
+def files_cli():
     '''
     Operations on file(s)
     '''
@@ -107,10 +107,10 @@ def test_cmd():
     files_log.warning('files_log.warning called from inside test_cmd')
     click.echo('click.echo: This is the info I got.')
 
-files_group.add_command(extract_cmd)
-files_group.add_command(zip_cmd)
-files_group.add_command(unzip_cmd)
-files_group.add_command(test_cmd)
+files_cli.add_command(extract_cmd)
+files_cli.add_command(zip_cmd)
+files_cli.add_command(unzip_cmd)
+files_cli.add_command(test_cmd)
 # file_cli.add_command(identify_mcd)
 # file_cli.add_command(hash_cmd)
-files_group.add_command(info_cmd)
+files_cli.add_command(info_cmd)

@@ -8,7 +8,7 @@ import sys
 import click
 
 # Application
-from .files import files_group 
+from .convert_cli import convert_cli
 
 
 # Setup for CLI-logging
@@ -60,11 +60,12 @@ class CatchAllExceptions(click.Group):
 @click.version_option()
 def cli(verbose):
     '''
-    Almanak CLI. Tools, services and workflows for almanak-repos.
+    Almanak CLI. Tools, services and workflows for almanak.
     '''
     if verbose:
         console_handler.setLevel(logging.INFO)
     pass
 
 
-cli.add_command(files_group)
+# cli.add_command(files_cli)
+cli.add_command(convert_cli)
