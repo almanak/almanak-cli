@@ -5,10 +5,14 @@ from pathlib import Path
 # Third pary
 import click
 
+# Application
+from convert_lib import convert_image
+
+
 convert_log = logging.getLogger(__name__)
 
-@click.group(name='convert')
-def convert_cli():
+@click.group()
+def convert_grp():
     '''
     Conversion of files
     '''
@@ -17,29 +21,32 @@ def convert_cli():
 
 
 @click.command('convert', short_help='convert file(s)')
-@click.argument('src', type=click.Path(exists=True, resolve_path=True, allow_dash=True))
-@click.argument('dest', type=click.Path(resolve_path=True, allow_dash=True))
-@click.option('--batch',
-              is_flag=True,
+@click.argument('source', type=click.Path(exists=True, resolve_path=True, allow_dash=True))
+@click.argument('destination', type=click.Path(resolve_path=True, allow_dash=True))
+@click.option('--batch', is_flag=True,
               help='')
-@click.option('--overwrite',
-              is_flag=True,
+@click.option('--overwrite', is_flag=True,
               help='overwrite any existing file or directory')
-def convert_cmd(src, dest, batch, overwrite):
+def convert(source, destination, batch, overwrite):
     '''
     Convert source to destination.
     Returns the full path of the extracted file.
     '''
+    src = Path(source)
+    dest = Path(destination)
+
+    if batch:
+        
     if Path(src).is_dir():
         for f in Path(src).iterdir():
-            if 
-        
+            if f.is_file
+    click.echo("converting...")
 
 
 
 @click.command('info', short_help='prints filename')
 @click.argument('path', type=click.Path(exists=True, resolve_path=True))
-def info_cmd(path):
+def info(path):
     '''
     Get information on a file (incl. zip-archives)
     '''
@@ -48,7 +55,7 @@ def info_cmd(path):
 
 
 @click.command('test', short_help='testcommand')
-def test_cmd():
+def test():
     '''
     Get information on a file (incl. zip-archives)
     '''
@@ -57,9 +64,9 @@ def test_cmd():
     click.echo('click.echo: This is the info I got.')
 
 
-convert_cli.add_command(convert_cmd)
-convert_cli.add_command(info_cmd)
-convert_cli.add_command(test_cmd)
+convert_grp.add_command(convert)
+convert_grp.add_command(info)
+convert_grp.add_command(test)
 
 # @click.command('extract', short_help='extract file from zip-archive')
 # @click.argument('file', type=click.Path())

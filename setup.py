@@ -17,6 +17,7 @@ setup(
     python_requires='>=3.6.2',
     install_requires=[
         'click',
+        'opencv-contrib-python',
         # 'almanak',
     ],
     entry_points="""

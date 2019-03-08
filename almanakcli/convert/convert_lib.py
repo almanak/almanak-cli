@@ -5,7 +5,7 @@ import cv2 as cv
 # from cv2 import imread, imwrite, resize, IMWRITE_JPEG_QUALITY, INTER_AREA
 
 
-ALLOWED_OUTPUT_EXTENSIONS = ['.png', '.gif', '.jpg', '.jpeg', '.jp2', '.tiff', '.tif']
+ALLOWED_OUTPUT_EXTENSIONS = ['.png', '.gif', '.jpg', '.jp2', '.tif']
 JPEG_QUALITY = 95
 
 def convert_image(input_file: Path, output_file: Path, max_width: int=None, max_height: int=None, quality:int=JPEG_QUALITY):
@@ -23,7 +23,7 @@ def convert_image(input_file: Path, output_file: Path, max_width: int=None, max_
         cv_img = _read_image(str(input_file))
         if max_height or max_width:
             cv_img = _resize_image(cv_img, max_height=max_height, max_width=max_width)
-        final = _save_image(str(output_file), cv_img, quality)
+        final = _save_image(output_file, cv_img, quality)
         return output_file
     except Exception as e:
         raise Exception(e)
@@ -48,5 +48,9 @@ def _read_image(filepath):
     return cv.imread(filepath)
 
 
-def _save_image(filename, cv_image, jpg_quality=95):
+def _save_image(filename: Path, cv_image, jpg_quality: int):
+    try:
+        filename.mkdir(parents=True)
+    except FileExistsError as e:
+        raise IOError(e)
     return cv.imwrite(filename, cv_image, [cv.IMWRITE_JPEG_QUALITY, jpg_quality])

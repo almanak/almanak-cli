@@ -1,18 +1,17 @@
 # Standard library
 import logging
 from os import path
-# import time
 import sys
 
 # Third party
 import click
 
 # Application
-from .convert_cli import convert_cli
+from almanakcli.convert import convert_grp
 
 
 # Setup for CLI-logging
-logger = logging.getLogger('almanakcli')
+logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 # info and higher also to sys.stderr (default stream for Streamhandler)
@@ -68,4 +67,4 @@ def cli(verbose):
 
 
 # cli.add_command(files_cli)
-cli.add_command(convert_cli)
+cli.add_command(convert_grp)
