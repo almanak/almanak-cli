@@ -1,1 +1,1 @@
-Command line interface for almanak.
+Command line interface for almanak python-module.
