@@ -2,7 +2,7 @@ Command line interface for almanak python-module.
 
 Possible structure:
 
-samjobs
+jobs
 
 - generate thumbnails and upload for images (bmp, jpg, png, tif...) and pdf-files
 - upload video and generate thumbnail-urls
@@ -18,7 +18,7 @@ files
 - move
 - delete
 - convert
-- checksumtest
+- test
 
 entities
 
@@ -37,4 +37,6 @@ relations
 - delete
 
 backup
+entities, relations, records, 
+- what?
 
